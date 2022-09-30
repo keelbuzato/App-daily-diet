@@ -5,8 +5,7 @@ export const Container = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background-color: red;
-  margin-bottom: 50px;
+  margin-bottom: 27px;
 `;
 
 export const Logo = styled.Image`

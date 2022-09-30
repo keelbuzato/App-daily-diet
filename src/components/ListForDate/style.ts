@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components/native';
 
 export const Container = styled.View`
   width: 100%;
+  margin-bottom: 32px;
 `;
 
 export const DateList = styled.Text`
@@ -10,5 +11,5 @@ export const DateList = styled.Text`
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.LG1}px;
   `}
-  margin-bottom:8px
+  margin-bottom:10px;
 `;

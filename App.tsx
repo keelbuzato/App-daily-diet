@@ -10,11 +10,12 @@ import {
 import { Home } from '@screens/home';
 import { Loading } from '@components/Loading';
 import { SafeAreaView, StatusBar } from 'react-native';
+import { Statistic } from '@screens/Statistic';
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Nunito_400Regular, Nunito_700Bold });
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <ThemeProvider theme={theme}>
         <StatusBar barStyle={'dark-content'} backgroundColor="transparent" />
         {fontsLoaded ? <Home /> : <Loading />}

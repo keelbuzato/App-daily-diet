@@ -1,3 +1,4 @@
+import { getPercentVariant } from '@components/Percent/utils/getPercentVariant';
 import styled, { css } from 'styled-components/native';
 
 export const Container = styled.TouchableOpacity`
@@ -35,7 +36,8 @@ export const Description = styled.Text`
 export const Status = styled.View`
   width: 14px;
   height: 14px;
-  background-color: green;
+  background-color: ${({ variant }) =>
+    getPercentVariant(variant).backgroundColor};
   border-radius: 100%;
   margin-right: 12px;
 `;

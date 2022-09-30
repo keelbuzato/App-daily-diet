@@ -1,3 +1,4 @@
+import { PercentVariant } from '@components/Percent/utils/getPercentVariant';
 import { TouchableOpacityProps } from 'react-native';
 import {
   Container,
@@ -11,11 +12,13 @@ import {
 type BoxInformationProps = TouchableOpacityProps & {
   value: string;
   description: string;
+  variant: PercentVariant;
 };
 
 export function BoxRegister({
   value,
   description,
+  variant,
   ...rest
 }: BoxInformationProps) {
   return (
@@ -25,7 +28,7 @@ export function BoxRegister({
         <Divider />
         <Description>{description}</Description>
       </ContainerInformation>
-      <Status />
+      <Status variant={variant} />
     </Container>
   );
 }

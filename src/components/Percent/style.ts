@@ -3,14 +3,16 @@ import { getPercentVariant } from './utils/getPercentVariant';
 
 export const Container = styled.View`
   width: 100%;
-  height: 102px;
-
+  max-width: 100%;
+  height: 110px;
+  padding: 16px;
   background-color: ${({ variant }) =>
     getPercentVariant(variant).backgroundColor};
 
   border-radius: 8px;
   justify-content: center;
   align-items: center;
+  margin-bottom: 12px;
 `;
 
 export const Value = styled.Text`
@@ -19,6 +21,7 @@ export const Value = styled.Text`
     font-size: ${theme.FONT_SIZE.XL}px;
     color: ${theme.COLORS.GRAY_700};
   `}
+  flex-wrap:wrap;
 `;
 
 export const Description = styled.Text`
@@ -27,7 +30,9 @@ export const Description = styled.Text`
     font-size: ${theme.FONT_SIZE.MD}px;
     color: ${theme.COLORS.GRAY_600};
   `}
-  align-items:center;
+  flex-wrap:wrap;
+  flex: 1;
+  align-items: center;
   justify-content: center;
 `;
 export const Form = styled.View`

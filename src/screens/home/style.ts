@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components/native';
 
-export const Container = styled.View`
-  flex: 1;
+export const Container = styled.ScrollView`
   padding: 24px;
+  height: 100%;
 `;
 export const ContainerInfoMeals = styled.View`
   width: 100%;
@@ -11,7 +11,6 @@ export const ContainerNewMeals = styled.View`
   width: 100%;
   height: 79px;
   margin-top: 46px;
-  margin-bottom: 32px;
 `;
 
 export const Titulo = styled.Text`
@@ -24,5 +23,7 @@ export const Titulo = styled.Text`
 `;
 export const DayList = styled.View`
   width: 100%;
-  height: 50px;
+  height: 251px;
+  margin-bottom: 20px;
+  margin-top: 32px;
 `;
