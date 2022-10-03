@@ -9,10 +9,10 @@ export enum PercentVariant {
 export const getPercentVariant = (variant: PercentVariant) =>
   ({
     [PercentVariant.primary]: {
-      backgroundColor: theme.COLORS.GREEN_MID,
+      backgroundColor: theme.COLORS.GREEN_LIGHT,
     },
     [PercentVariant.secundary]: {
-      backgroundColor: theme.COLORS.RED_MID,
+      backgroundColor: theme.COLORS.RED_LIGHT,
     },
     [PercentVariant.tertiary]: {
       backgroundColor: theme.COLORS.GRAY_200,

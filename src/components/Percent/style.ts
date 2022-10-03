@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components/native';
 import { getPercentVariant } from './utils/getPercentVariant';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export const Container = styled.View`
   width: 100%;
@@ -40,3 +41,11 @@ export const Form = styled.View`
   top: 8px;
   right: 8px;
 `;
+export const ContainerButtoIcon = styled.TouchableOpacity`
+  width: 24px;
+  height: 24px;
+`;
+
+export const Icon = styled(MaterialIcons).attrs(({ theme }) => ({
+  size: 24,
+}))``;

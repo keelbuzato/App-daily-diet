@@ -1,5 +1,6 @@
 import { getPercentVariant } from '@components/Percent/utils/getPercentVariant';
 import styled, { css } from 'styled-components/native';
+import { RFPercentage } from 'react-native-responsive-fontsize';
 
 export const Container = styled.View`
   flex: 1;
@@ -7,7 +8,8 @@ export const Container = styled.View`
 
 export const ContainerPercentStatistic = styled.View`
   flex: 1;
-  height: 200px;
+  width: 100%;
+  height: ${RFPercentage(37)}px;
   background-color: ${({ variant }) =>
     getPercentVariant(variant).backgroundColor};
 `;
@@ -37,8 +39,9 @@ export const ContainerDuploBox = styled.View`
   width: 100%;
 `;
 export const DataValue = styled.View`
+  flex: 1;
   text-align: center;
-  padding: 20px;
+  padding: 40px;
 `;
 
 export const Description = styled.Text`

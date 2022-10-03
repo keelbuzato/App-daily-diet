@@ -5,12 +5,13 @@ import { TouchableOpacityProps } from 'react-native';
 type Props = TouchableOpacityProps & {
   title: string;
   nameIcon: string;
+  onPress: () => void;
 };
 
-export function Button({ title, nameIcon, ...rest }: Props) {
+export function Button({ title, nameIcon, onPress, ...rest }: Props) {
   const { COLORS } = useTheme();
   return (
-    <Container>
+    <Container {...rest} onPress={onPress}>
       <IconForButton name={nameIcon} />
       <Title>{title}</Title>
     </Container>

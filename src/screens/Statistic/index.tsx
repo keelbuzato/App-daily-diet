@@ -2,7 +2,7 @@ import { Box } from '@components/Box';
 import { ButtonIcon } from '@components/ButtonIcon';
 import { Percent } from '@components/Percent';
 import { PercentVariant } from '@components/Percent/utils/getPercentVariant';
-
+import { useNavigation } from '@react-navigation/native';
 import {
   Description,
   ContainerPercentStatistic,
@@ -16,11 +16,21 @@ import {
 } from './styled';
 
 export function Statistic() {
+  const navigate = useNavigation();
+
+  const hanldeBackHome = () => {
+    navigate.navigate('home');
+  };
+
   return (
     <Container>
       <ContainerPercentStatistic variant={PercentVariant.secundary}>
         <DataValue>
-          <ButtonIcon icon="arrow-back" type="SECONDARY"></ButtonIcon>
+          <ButtonIcon
+            icon="arrow-back"
+            type="SECONDARY"
+            onPress={hanldeBackHome}
+          ></ButtonIcon>
           <Value>30,21%</Value>
           <Description>das refeiçoes dentro da dieta</Description>
         </DataValue>
