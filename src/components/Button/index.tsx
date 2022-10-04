@@ -4,7 +4,7 @@ import { TouchableOpacityProps } from 'react-native';
 
 type Props = TouchableOpacityProps & {
   title: string;
-  nameIcon: string;
+  nameIcon?: string;
   onPress: () => void;
 };
 
