@@ -8,7 +8,6 @@ export const Container = styled.View`
 export const ContainerInput = styled.TextInput`
   width: 100%;
   height: 48px;
-  padding: 14px;
   ${({ theme }) => css`
     color: ${theme.COLORS.GRAY_700};
     font-family: ${theme.FONT_FAMILY.REGULAR};
@@ -16,7 +15,6 @@ export const ContainerInput = styled.TextInput`
   `}
   border-radius:6px;
   border: 1px solid ${({ theme }) => theme.COLORS.GRAY_300};
-  line-height: 20px;
 `;
 
 export const Titulo = styled.Text`

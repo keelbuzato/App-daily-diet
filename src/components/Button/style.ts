@@ -4,12 +4,9 @@ import { MaterialIcons } from '@expo/vector-icons';
 export const Container = styled.TouchableOpacity`
   width: 100%;
   height: 50px;
-
   flex-direction: row;
-
   border-radius: 6px;
   background-color: ${({ theme }) => theme.COLORS.GRAY_600};
-
   align-items: center;
   justify-content: center;
 `;

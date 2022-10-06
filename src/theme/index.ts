@@ -27,6 +27,7 @@ export default {
     MD: 14,
     LG: 16,
     LG1: 18,
+    LG2: 24,
     XL: 32,
   },
 };

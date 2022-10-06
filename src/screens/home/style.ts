@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components/native';
 export const Container = styled.ScrollView`
   padding: 24px;
   height: 100%;
+  background-color: ${({ theme }) => theme.COLORS.WHITE};
 `;
 export const ContainerInfoMeals = styled.View`
   width: 100%;
