@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-export const Container = styled.ScrollView`
+export const Container = styled(SafeAreaView)`
   padding: 24px;
-  height: 100%;
+
   background-color: ${({ theme }) => theme.COLORS.WHITE};
 `;
 export const ContainerInfoMeals = styled.View`
@@ -24,7 +25,6 @@ export const Titulo = styled.Text`
 `;
 export const DayList = styled.View`
   width: 100%;
-  height: 251px;
   margin-bottom: 20px;
   margin-top: 32px;
 `;

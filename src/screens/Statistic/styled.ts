@@ -2,7 +2,7 @@ import { getPercentVariant } from '@components/Percent/utils/getPercentVariant';
 import styled, { css } from 'styled-components/native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   flex: 1;
 `;
 

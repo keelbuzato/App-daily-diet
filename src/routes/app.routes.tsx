@@ -3,6 +3,7 @@ import { Feedback } from '@screens/Feedback';
 import { Home } from '@screens/home';
 import { RegisterNewMeals } from '@screens/RegisterNewMeals';
 import { Statistic } from '@screens/Statistic';
+
 const { Navigator, Screen } = createNativeStackNavigator();
 
 export function AppRoutes() {

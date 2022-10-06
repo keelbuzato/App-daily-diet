@@ -11,6 +11,8 @@ import {
 } from './style';
 import { ListForDate } from '@components/ListForDate';
 import { useNavigation } from '@react-navigation/native';
+import { ScrollView } from 'react-native';
+import { StatusBar } from 'react-native';
 
 export function Home() {
   const navigation = useNavigation();
@@ -24,31 +26,38 @@ export function Home() {
   };
 
   return (
-    <Container>
-      <Header />
-      <Percent
-        value="99,32%"
-        description="das refeições dentro da dieta"
-        variant={PercentVariant.primary}
-        icon={'arrow-upward'}
-        onPress={handlePercent}
+    <ScrollView style={{ flex: 1 }}>
+      <StatusBar
+        barStyle={'dark-content'}
+        backgroundColor="transparent"
+        translucent
       />
-      <ContainerInfoMeals>
-        <ContainerNewMeals>
-          <Titulo>Refeições</Titulo>
-          <Button
-            title="Nova Refeição"
-            nameIcon="add"
-            onPress={registerNewMeal}
-          />
-        </ContainerNewMeals>
-        <DayList>
-          <ListForDate />
-          <ListForDate />
-          <ListForDate />
-          <ListForDate />
-        </DayList>
-      </ContainerInfoMeals>
-    </Container>
+      <Container>
+        <Header />
+        <Percent
+          value="99,32%"
+          description="das refeições dentro da dieta"
+          variant={PercentVariant.primary}
+          icon={'arrow-upward'}
+          onPress={handlePercent}
+        />
+        <ContainerInfoMeals>
+          <ContainerNewMeals>
+            <Titulo>Refeições</Titulo>
+            <Button
+              title="Nova Refeição"
+              nameIcon="add"
+              onPress={registerNewMeal}
+            />
+          </ContainerNewMeals>
+          <DayList>
+            <ListForDate />
+            <ListForDate />
+            <ListForDate />
+            <ListForDate />
+          </DayList>
+        </ContainerInfoMeals>
+      </Container>
+    </ScrollView>
   );
 }

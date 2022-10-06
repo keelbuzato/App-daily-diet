@@ -7,13 +7,14 @@ import {
   Nunito_700Bold,
 } from '@expo-google-fonts/nunito';
 import { Loading } from '@components/Loading';
-import { SafeAreaView, StatusBar } from 'react-native';
+import { StatusBar } from 'react-native';
 import { Routes } from '@routes/index';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Nunito_400Regular, Nunito_700Bold });
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaProvider>
       <ThemeProvider theme={theme}>
         <StatusBar
           barStyle={'dark-content'}
@@ -22,6 +23,6 @@ export default function App() {
         />
         {fontsLoaded ? <Routes /> : <Loading />}
       </ThemeProvider>
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 }
