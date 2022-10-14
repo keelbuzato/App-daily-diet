@@ -7,7 +7,7 @@ import {
   ContainerButtoIcon,
   Icon,
 } from './style';
-import { PercentVariant } from './utils/getPercentVariant';
+import { PercentVariant } from '../../utils/getPercentVariant';
 import { MaterialIcons } from '@expo/vector-icons';
 import { TouchableOpacityProps } from 'react-native';
 

@@ -1,35 +1,32 @@
 import { BoxRegister } from '@components/BoxRegister';
-import { PercentVariant } from '@components/Percent/utils/getPercentVariant';
-import { useState } from 'react';
-import { FlatList } from 'react-native';
+import { PercentVariant } from '@utils/getPercentVariant';
+import { TouchableOpacityProps } from 'react-native';
 import { DateList, Container } from './style';
 
-export function ListForDate() {
-  const [meals, setMeals] = useState('');
+interface Props extends TouchableOpacityProps {
+  NewMealRegister: [];
+}
 
+export function ListForDate({ NewMealRegister, onPress, ...rest }: Props) {
   return (
     <Container>
-      <DateList>12.08.22</DateList>
-      <BoxRegister
-        value={'20:00'}
-        description={'X-Tudo'}
-        variant={PercentVariant.secundary}
-      />
-      <BoxRegister
-        value={'20:00'}
-        description={'X-Tudo'}
-        variant={PercentVariant.primary}
-      />
-      <BoxRegister
-        value={'20:00'}
-        description={'X-Tudo'}
-        variant={PercentVariant.primary}
-      />
-      <BoxRegister
-        value={'20:00'}
-        description={'X-Tudo'}
-        variant={PercentVariant.secundary}
-      />
+      {NewMealRegister.map((item) => (
+        <>
+          <DateList>{item.date}</DateList>
+          {item.list.map((meal) => (
+            <BoxRegister
+              onPress={() => onPress(meal?.id)}
+              value={meal.hours}
+              description={meal.name}
+              variant={
+                meal?.variant === 'UP'
+                  ? PercentVariant.primary
+                  : PercentVariant.secundary
+              }
+            />
+          ))}
+        </>
+      ))}
     </Container>
   );
 }

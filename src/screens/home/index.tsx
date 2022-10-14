@@ -1,7 +1,7 @@
 import { Button } from '@components/Button';
 import { Header } from '@components/Header';
 import { Percent } from '@components/Percent';
-import { PercentVariant } from '@components/Percent/utils/getPercentVariant';
+import { PercentVariant } from '@utils/getPercentVariant';
 import {
   Container,
   ContainerInfoMeals,
@@ -10,12 +10,48 @@ import {
   DayList,
 } from './style';
 import { ListForDate } from '@components/ListForDate';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { ScrollView } from 'react-native';
 import { StatusBar } from 'react-native';
+import { getAllNewMeals } from '@storage/GroupNewMeals/getAllNewMeals';
+import { useState, useCallback, useEffect } from 'react';
 
 export function Home() {
+  const [mealSummary, setMealSummary] = useState([]);
+  const [teste, setTeste] = useState([{}]);
   const navigation = useNavigation();
+
+  async function fecthMeals() {
+    try {
+      const data = await getAllNewMeals();
+      setTeste(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const addDate = useCallback(
+    (list) => {
+      const newDates = [];
+      list.forEach((listItem) => {
+        const hasDate = newDates.some((item) => item.date === listItem.date);
+        if (!hasDate) {
+          newDates.push({
+            date: listItem.date,
+            list: populateList(listItem.date, list),
+          });
+        }
+      });
+      console.log(newDates);
+      setMealSummary(newDates);
+    },
+    [mealSummary],
+  );
+
+  const populateList = (date, list) => {
+    console.log(date);
+    return list.filter((item) => item.date === date);
+  };
 
   function handlePercent() {
     navigation.navigate('statistic');
@@ -24,9 +60,23 @@ export function Home() {
   const registerNewMeal = () => {
     navigation.navigate('newMeals');
   };
+  const handleDetailsMeal = (id: string) => {
+    navigation.navigate('detailsMeals', { id });
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      console.log('use executou');
+      fecthMeals();
+    }, []),
+  );
+
+  useEffect(() => {
+    addDate(teste);
+  }, [teste]);
 
   return (
-    <ScrollView style={{ flex: 1 }}>
+    <ScrollView>
       <StatusBar
         barStyle={'dark-content'}
         backgroundColor="transparent"
@@ -48,13 +98,15 @@ export function Home() {
               title="Nova Refeição"
               nameIcon="add"
               onPress={registerNewMeal}
+              type="CONTAINED"
             />
           </ContainerNewMeals>
+
           <DayList>
-            <ListForDate />
-            <ListForDate />
-            <ListForDate />
-            <ListForDate />
+            <ListForDate
+              NewMealRegister={mealSummary}
+              onPress={handleDetailsMeal}
+            />
           </DayList>
         </ContainerInfoMeals>
       </Container>

@@ -1,9 +1,9 @@
-import { getPercentVariant } from '@components/Percent/utils/getPercentVariant';
+import { getPercentVariant } from '@utils/getPercentVariant';
 import styled, { css } from 'styled-components/native';
 import { MaterialIcons } from '@expo/vector-icons';
 
 export const Conatiner = styled.View`
-  flex: 1;
+  width: 100%;
 `;
 
 export const Header = styled.View`

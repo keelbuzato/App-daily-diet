@@ -1,4 +1,4 @@
-import { PercentVariant } from '@components/Percent/utils/getPercentVariant';
+import { PercentVariant } from '@utils/getPercentVariant';
 import { TouchableOpacityProps } from 'react-native';
 import { Conatiner, Header, Title, Icon, Button } from './style';
 import { MaterialIcons } from '@expo/vector-icons';

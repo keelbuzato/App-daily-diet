@@ -1,19 +1,20 @@
 import { Container, Title, IconForButton } from './style';
 import { useTheme } from 'styled-components/native';
 import { TouchableOpacityProps } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 
-type Props = TouchableOpacityProps & {
+export type Props = TouchableOpacityProps & {
   title: string;
-  nameIcon?: string;
+  nameIcon?: keyof typeof MaterialIcons.glyphMap;
   onPress: () => void;
+  type: 'CONTAINED' | 'OUTLINED';
 };
 
-export function Button({ title, nameIcon, onPress, ...rest }: Props) {
-  const { COLORS } = useTheme();
+export function Button({ title, nameIcon, onPress, type, ...rest }: Props) {
   return (
-    <Container {...rest} onPress={onPress}>
-      <IconForButton name={nameIcon} />
-      <Title>{title}</Title>
+    <Container {...rest} onPress={onPress} type={type}>
+      <IconForButton name={nameIcon} type={type} />
+      <Title type={type}>{title}</Title>
     </Container>
   );
 }

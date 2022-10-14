@@ -1,14 +1,14 @@
-import theme from 'src/theme';
+import theme from '@utils/index';
 import styled, { css } from 'styled-components/native';
 import { View, TouchableOpacity } from 'react-native';
+import { PercentVariant } from '@utils/getPercentVariant';
 
 interface Props {
-  type: 'UP' | 'DOWN';
+  type: PercentVariant;
 }
 
-interface ButtonProps {
+interface ButtonProps extends Props {
   isActive: boolean;
-  type: 'UP' | 'DOWN';
 }
 
 export const Container = styled(TouchableOpacity)<ButtonProps>`
@@ -23,14 +23,14 @@ export const Container = styled(TouchableOpacity)<ButtonProps>`
 
   ${({ isActive, type }) =>
     isActive &&
-    type === 'UP' &&
+    type === PercentVariant.primary &&
     css`
       background-color: ${({ theme }) => theme.COLORS.GREEN_LIGHT};
       border: 1px solid ${({ theme }) => theme.COLORS.GREEN_DARK};
     `}
   ${({ isActive, type }) =>
     isActive &&
-    type === 'DOWN' &&
+    type === PercentVariant.secundary &&
     css`
       background-color: ${({ theme }) => theme.COLORS.RED_LIGHT};
       border: 1px solid ${({ theme }) => theme.COLORS.RED_DARK};
@@ -40,7 +40,9 @@ export const Status = styled(View)<Props>`
   width: 8px;
   height: 8px;
   background-color: ${({ theme, type }) =>
-    type === 'UP' ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK};
+    type === PercentVariant.primary
+      ? theme.COLORS.GREEN_DARK
+      : theme.COLORS.RED_DARK};
   margin-right: 8px;
   align-items: center;
   justify-content: center;

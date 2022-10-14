@@ -1,4 +1,4 @@
-import theme from '../../../theme';
+import theme from '.';
 
 export enum PercentVariant {
   primary = 'primary',

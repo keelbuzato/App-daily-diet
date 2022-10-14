@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components/native';
-import { getPercentVariant } from './utils/getPercentVariant';
+import { getPercentVariant } from '../../utils/getPercentVariant';
 import { MaterialIcons } from '@expo/vector-icons';
 
 export const Container = styled.View`

@@ -1,13 +1,19 @@
+import { PercentVariant } from '@utils/getPercentVariant';
 import { TouchableOpacityProps } from 'react-native';
 import { Container, Status, Title } from './style';
 
-interface Props extends TouchableOpacityProps {
+export interface PropsButtonSelect extends TouchableOpacityProps {
   title: string;
-  type: 'UP' | 'DOWN';
+  type: PercentVariant;
   isActive: boolean;
 }
 
-export const ButtonSelect = ({ title, type, isActive, ...rest }: Props) => {
+export const ButtonSelect = ({
+  title,
+  type,
+  isActive,
+  ...rest
+}: PropsButtonSelect) => {
   return (
     <Container {...rest} isActive={isActive} type={type}>
       <Status type={type} />

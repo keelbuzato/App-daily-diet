@@ -1,4 +1,4 @@
-import { getPercentVariant } from '@components/Percent/utils/getPercentVariant';
+import { getPercentVariant } from '@utils/getPercentVariant';
 import styled, { css } from 'styled-components/native';
 
 export const Container = styled.TouchableOpacity`

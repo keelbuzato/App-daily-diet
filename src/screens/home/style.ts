@@ -8,6 +8,7 @@ export const Container = styled(SafeAreaView)`
 `;
 export const ContainerInfoMeals = styled.View`
   width: 100%;
+  min-height: 550px;
 `;
 export const ContainerNewMeals = styled.View`
   width: 100%;
@@ -27,4 +28,12 @@ export const DayList = styled.View`
   width: 100%;
   margin-bottom: 20px;
   margin-top: 32px;
+`;
+export const DateList = styled.Text`
+  ${({ theme }) => css`
+    color: ${theme.COLORS.GRAY_700};
+    font-family: ${theme.FONT_FAMILY.BOLD};
+    font-size: ${theme.FONT_SIZE.LG1}px;
+  `}
+  margin-bottom:10px;
 `;

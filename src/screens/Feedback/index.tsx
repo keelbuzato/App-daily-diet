@@ -20,6 +20,7 @@ export const Feedback = () => {
           onPress={() => backHome()}
           title="Ir para a página inicial"
           style={{ width: 191 }}
+          type="CONTAINED"
         />
       </BoxCenter>
     </Container>

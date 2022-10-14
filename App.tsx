@@ -1,6 +1,6 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import theme from './src/theme';
+import theme from './src/utils';
 import {
   useFonts,
   Nunito_400Regular,

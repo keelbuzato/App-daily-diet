@@ -1,7 +1,7 @@
 import { Box } from '@components/Box';
 import { ButtonIcon } from '@components/ButtonIcon';
 import { Percent } from '@components/Percent';
-import { PercentVariant } from '@components/Percent/utils/getPercentVariant';
+import { PercentVariant } from '@utils/getPercentVariant';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { StatusBar } from 'react-native';
