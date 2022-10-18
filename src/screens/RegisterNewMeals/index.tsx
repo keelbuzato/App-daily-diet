@@ -8,7 +8,9 @@ import { ButtonSelect } from '@components/ButtonSelect';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { createdNewMeals } from '@storage/GroupNewMeals/createdNewMeals';
+import DatePicker from 'react-native-date-picker';
 import uuid from 'react-native-uuid';
+import React from 'react';
 export function RegisterNewMeals() {
   const [transactionType, setTransactionType] = useState('');
   const [nameMeal, setNameMeal] = useState('');
@@ -17,7 +19,6 @@ export function RegisterNewMeals() {
   const [hours, setHours] = useState('');
 
   const navigation = useNavigation();
-  const Stack = createNativeStackNavigator();
 
   const handleTransactionTypeSelect = (type: 'UP' | 'DOWN') => {
     setTransactionType(type);
@@ -44,7 +45,7 @@ export function RegisterNewMeals() {
 
       await createdNewMeals(registerMeals);
 
-      navigation.navigate('feedback');
+      navigation.navigate('feedback', { variant: transactionType });
     } catch (error) {
       console.log(error);
     }

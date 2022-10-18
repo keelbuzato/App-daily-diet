@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components/native';
-import { getPercentVariant, PercentVariant } from '@utils/getPercentVariant';
+import { PercentVariant } from '@utils/getPercentVariant';
 
-export const Container = styled.View`
+export const Container = styled.SafeAreaView`
   flex: 1;
-  background-color: yellow;
   border-radius: 20px;
 `;
 export const ContainerBody = styled.View`
@@ -12,7 +11,7 @@ export const ContainerBody = styled.View`
   background-color: ${({ theme }) => theme.COLORS.WHITE};
   border-radius: 20px;
   margin-top: -30px;
-  padding: 24px;
+  padding: 24px 24px 0px 24px;
 `;
 
 export const Titulo = styled.Text`

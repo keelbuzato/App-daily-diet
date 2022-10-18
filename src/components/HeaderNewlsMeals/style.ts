@@ -4,6 +4,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 export const Conatiner = styled.View`
   width: 100%;
+  background-color: ${({ theme }) => theme.COLORS.WHITE};
 `;
 
 export const Header = styled.View`

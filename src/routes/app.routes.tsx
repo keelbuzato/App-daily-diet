@@ -4,6 +4,7 @@ import { Feedback } from '@screens/Feedback';
 import { Home } from '@screens/home';
 import { RegisterNewMeals } from '@screens/RegisterNewMeals';
 import { Statistic } from '@screens/Statistic';
+import React from 'react';
 
 const { Navigator, Screen } = createNativeStackNavigator();
 

@@ -15,6 +15,7 @@ import { ScrollView } from 'react-native';
 import { StatusBar } from 'react-native';
 import { getAllNewMeals } from '@storage/GroupNewMeals/getAllNewMeals';
 import { useState, useCallback, useEffect } from 'react';
+import React from 'react';
 
 export function Home() {
   const [mealSummary, setMealSummary] = useState([]);
@@ -42,14 +43,13 @@ export function Home() {
           });
         }
       });
-      console.log(newDates);
+
       setMealSummary(newDates);
     },
     [mealSummary],
   );
 
   const populateList = (date, list) => {
-    console.log(date);
     return list.filter((item) => item.date === date);
   };
 
@@ -66,8 +66,8 @@ export function Home() {
 
   useFocusEffect(
     useCallback(() => {
-      console.log('use executou');
       fecthMeals();
+      console.log('atualização');
     }, []),
   );
 

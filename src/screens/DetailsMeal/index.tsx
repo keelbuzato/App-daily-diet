@@ -25,12 +25,7 @@ import { Loading } from '@components/Loading';
 import { getVariant } from '@utils/getVariant';
 import React from 'react';
 
-type Props = {
-  name: string;
-  description: string;
-};
-
-export const DetailsMeal = ({ name, description }: Props) => {
+export const DetailsMeal = () => {
   const [detailsMeal, setDetailsMeal] = useState();
   const navigation = useNavigation();
   const {
@@ -50,13 +45,25 @@ export const DetailsMeal = ({ name, description }: Props) => {
     }
   }
 
+  const confirmationRemoveMeals = () => {
+    Alert.alert('Remover', 'Deseja remover essa refeição?', [
+      { text: 'Não', style: 'cancel' },
+      {
+        text: 'Sim',
+        onPress: async () => {
+          await handleRemoveMeals(id);
+          backHome();
+        },
+      },
+    ]);
+  };
+
   function backHome() {
     navigation.navigate('home');
   }
 
   const getMeal = useCallback(async () => {
     const meal = await getByIdMeals(id);
-    console.log(meal);
     setDetailsMeal(meal);
   }, [id]);
 
@@ -103,7 +110,7 @@ export const DetailsMeal = ({ name, description }: Props) => {
             />
             <Button
               title="Excluir refeição"
-              onPress={() => handleRemoveMeals(id)}
+              onPress={() => confirmationRemoveMeals(id)}
               nameIcon="delete"
               type="OUTLINED"
             />

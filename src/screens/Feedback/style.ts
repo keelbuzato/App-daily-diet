@@ -1,3 +1,4 @@
+import { PercentVariant } from '@utils/getPercentVariant';
 import styled, { css } from 'styled-components/native';
 
 export const Container = styled.View`
@@ -16,11 +17,15 @@ export const BoxCenter = styled.View`
 
 export const Title = styled.Text`
   ${({ theme }) => css`
-    color: ${theme.COLORS.GREEN_DARK};
+    color: ${({ variant, theme }) =>
+      variant === PercentVariant.primary
+        ? theme.COLORS.GREEN_DARK
+        : theme.COLORS.RED_DARK};
     font-family: ${theme.FONT_FAMILY.BOLD};
     font-size: ${theme.FONT_SIZE.LG2}px;
   `}
   text-align:center;
+  margin: 8px;
 `;
 
 export const Form = styled.View`
