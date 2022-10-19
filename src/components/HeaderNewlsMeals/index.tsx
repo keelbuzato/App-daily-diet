@@ -2,11 +2,13 @@ import { PercentVariant } from '@utils/getPercentVariant';
 import { TouchableOpacityProps } from 'react-native';
 import { Conatiner, Header, Title, Icon, Button } from './style';
 import { MaterialIcons } from '@expo/vector-icons';
+import React from 'react';
+import { getVariant } from '@utils/getVariant';
 
 type Props = TouchableOpacityProps & {
   titulo: string;
   icon?: keyof typeof MaterialIcons.glyphMap;
-  variant: PercentVariant;
+  variant?: PercentVariant;
   onPress: () => void;
 };
 export function HeaderNewlsMeals({

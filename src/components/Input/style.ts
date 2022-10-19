@@ -15,6 +15,7 @@ export const ContainerInput = styled.TextInput`
   `}
   border-radius:6px;
   border: 1px solid ${({ theme }) => theme.COLORS.GRAY_300};
+  padding: 8px;
 `;
 
 export const Titulo = styled.Text`

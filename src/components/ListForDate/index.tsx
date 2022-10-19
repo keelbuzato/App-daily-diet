@@ -1,5 +1,6 @@
 import { BoxRegister } from '@components/BoxRegister';
 import { PercentVariant } from '@utils/getPercentVariant';
+import React from 'react';
 import { TouchableOpacityProps } from 'react-native';
 import { DateList, Container } from './style';
 

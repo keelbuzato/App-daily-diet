@@ -15,6 +15,6 @@ export const getPercentVariant = (variant: PercentVariant) =>
       backgroundColor: theme.COLORS.RED_LIGHT,
     },
     [PercentVariant.tertiary]: {
-      backgroundColor: theme.COLORS.GRAY_200,
+      backgroundColor: theme.COLORS.GRAY_300,
     },
   }[variant]);

@@ -61,6 +61,9 @@ export const DetailsMeal = () => {
   function backHome() {
     navigation.navigate('home');
   }
+  function editRegisterMeal() {
+    navigation.navigate('editRegister', { id });
+  }
 
   const getMeal = useCallback(async () => {
     const meal = await getByIdMeals(id);
@@ -84,7 +87,7 @@ export const DetailsMeal = () => {
       <Container>
         <HeaderNewlsMeals
           titulo="Refeição"
-          variant={PercentVariant.primary}
+          variant={getVariant(detailsMeal.variant)}
           onPress={backHome}
           icon={'arrow-back'}
         />
@@ -104,7 +107,7 @@ export const DetailsMeal = () => {
           <ContainerFooter>
             <Button
               title="Editar refeição"
-              onPress={() => {}}
+              onPress={() => editRegisterMeal(id)}
               nameIcon="edit"
               type="CONTAINED"
             />

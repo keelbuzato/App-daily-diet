@@ -6,7 +6,6 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import React from 'react';
 import { getVariant } from '@utils/getVariant';
 
-type VariantPropd = {};
 export const Feedback = () => {
   const navigation = useNavigation();
   const {

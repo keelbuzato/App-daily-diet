@@ -1,16 +1,15 @@
 import styled, { css } from 'styled-components/native';
 import { PercentVariant } from '@utils/getPercentVariant';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-export const Container = styled.SafeAreaView`
+export const Container = styled(SafeAreaView)`
   flex: 1;
-  border-radius: 20px;
+  background-color: ${({ theme }) => theme.COLORS.WHITE};
 `;
 export const ContainerBody = styled.View`
-  flex: 1;
-  width: 100%;
+  flex: 6;
   background-color: ${({ theme }) => theme.COLORS.WHITE};
   border-radius: 20px;
-  margin-top: -30px;
   padding: 24px 24px 0px 24px;
 `;
 

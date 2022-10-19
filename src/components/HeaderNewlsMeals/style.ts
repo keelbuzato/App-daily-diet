@@ -1,10 +1,10 @@
 import { getPercentVariant } from '@utils/getPercentVariant';
 import styled, { css } from 'styled-components/native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { SafeAreaView } from 'react-native';
 
-export const Conatiner = styled.View`
-  width: 100%;
-  background-color: ${({ theme }) => theme.COLORS.WHITE};
+export const Conatiner = styled(SafeAreaView)`
+  flex: 1;
 `;
 
 export const Header = styled.View`
@@ -33,5 +33,5 @@ export const Button = styled.TouchableOpacity`
 export const Icon = styled(MaterialIcons).attrs(({ theme }) => ({
   size: 24,
 }))`
-  right: 82px;
+  right: 100px;
 `;

@@ -7,7 +7,7 @@ import {
   Nunito_700Bold,
 } from '@expo-google-fonts/nunito';
 import { Loading } from '@components/Loading';
-import { StatusBar } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import { Routes } from '@routes/index';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
@@ -16,11 +16,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <StatusBar
-          barStyle={'dark-content'}
-          backgroundColor="transparent"
-          translucent
-        />
+        <StatusBar style="inverted" backgroundColor="red" />
         {fontsLoaded ? <Routes /> : <Loading />}
       </ThemeProvider>
     </SafeAreaProvider>

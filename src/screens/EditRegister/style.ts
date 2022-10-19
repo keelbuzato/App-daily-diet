@@ -1,39 +1,27 @@
 import styled, { css } from 'styled-components/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
-export const Teste = styled.SafeAreaView`
+export const ContainerSafeAreaView = styled(SafeAreaView)`
   flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.WHITE};
 `;
-
-export const Container = styled.View`
+export const ContainerBody = styled.View`
+  flex: 7;
   background-color: ${({ theme }) => theme.COLORS.WHITE};
-  width: 100%;
-  padding: 24px 24px 0px 24px;
   border-radius: 20px;
+  padding: 24px;
 `;
-export const ContainerBoxFather = styled.View`
-  flex-direction: row;
-`;
-
 export const ContainerInfoDateAndHours = styled.View`
-  width: 48%;
-  margin-right: 15px;
-  flex-direction: column;
-`;
-export const Form = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 148px;
+  align-items: center;
 `;
-
-export const Question = styled.Text`
-  ${({ theme }) => css`
-    font-family: ${theme.FONT_FAMILY.BOLD};
-    font-size: ${theme.FONT_SIZE.LG}px;
-    color: ${theme.COLORS.GRAY_700};
-  `}
+export const ContainerDate = styled.View`
+  width: 48%;
+`;
+export const ContainerTime = styled.View`
+  width: 48%;
 `;
 export const ButtonDateAndHours = styled.TouchableOpacity`
   width: 100%;
@@ -50,14 +38,6 @@ export const ButtonDateAndHours = styled.TouchableOpacity`
   align-items: flex-start;
   margin-bottom: 24px;
 `;
-
-export const InputDatePicker = styled(DateTimePickerModal)`
-  width: 100%;
-  height: 300px;
-  right: 15px;
-  min-height: 30px;
-`;
-
 export const Title = styled.Text`
   ${({ theme }) => css`
     color: ${theme.COLORS.GRAY_600};
@@ -65,4 +45,23 @@ export const Title = styled.Text`
     font-size: ${theme.FONT_SIZE.MD}px;
   `}
   margin-bottom:4px;
+`;
+export const SelectDateAndTime = styled(DateTimePickerModal)`
+  width: 100%;
+  height: 300px;
+  right: 15px;
+  min-height: 30px;
+`;
+export const Form = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 148px;
+`;
+export const Question = styled.Text`
+  ${({ theme }) => css`
+    font-family: ${theme.FONT_FAMILY.BOLD};
+    font-size: ${theme.FONT_SIZE.LG}px;
+    color: ${theme.COLORS.GRAY_700};
+  `}
 `;
