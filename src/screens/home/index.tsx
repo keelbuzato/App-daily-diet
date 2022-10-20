@@ -16,20 +16,35 @@ import { StatusBar } from 'react-native';
 import { getAllNewMeals } from '@storage/GroupNewMeals/getAllNewMeals';
 import { useState, useCallback, useEffect } from 'react';
 import React from 'react';
+import { createdDate } from '@utils/time';
 
 export function Home() {
   const [mealSummary, setMealSummary] = useState([]);
-  const [teste, setTeste] = useState([{}]);
+  const [getMeal, setGetMeal] = useState([{}]);
   const navigation = useNavigation();
 
   async function fecthMeals() {
     try {
       const data = await getAllNewMeals();
-      setTeste(data);
+      console.log(data);
+      const dateString = data.sort(
+        (a, b) => createdDate(b.date, b.hours) - createdDate(a.date, a.hours),
+      );
+
+      setGetMeal(dateString);
     } catch (error) {
       console.log(error);
     }
   }
+
+  const PercentageOfMeals = () => {
+    const variants = getMeal.filter((item) => item.variant == 'UP');
+    const correctMeals = variants.length;
+    const allMeal = getMeal.length;
+    const calcPercent = (correctMeals / allMeal) * 100;
+    const percent = calcPercent.toFixed(2).replace('.', ',');
+    return `${percent}%`;
+  };
 
   const addDate = useCallback(
     (list) => {
@@ -72,8 +87,8 @@ export function Home() {
   );
 
   useEffect(() => {
-    addDate(teste);
-  }, [teste]);
+    addDate(getMeal);
+  }, [getMeal]);
 
   return (
     <ScrollView>
@@ -85,7 +100,7 @@ export function Home() {
       <Container>
         <Header />
         <Percent
-          value="99,32%"
+          value={PercentageOfMeals()}
           description="das refeições dentro da dieta"
           variant={PercentVariant.primary}
           icon={'arrow-upward'}

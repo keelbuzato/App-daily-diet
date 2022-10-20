@@ -14,7 +14,7 @@ import { TouchableOpacityProps } from 'react-native';
 type IconProps = keyof typeof MaterialIcons.glyphMap;
 
 type props = TouchableOpacityProps & {
-  value: string;
+  value: number;
   description: string;
   variant: PercentVariant;
   icon?: IconProps;
@@ -32,7 +32,11 @@ export function Percent({
   return (
     <Container variant={variant}>
       <Form>
-        <ContainerButtoIcon onPress={onPress} {...rest}>
+        <ContainerButtoIcon
+          onPress={onPress}
+          hitSlop={{ top: 20, left: 20, right: 20, bottom: 20 }}
+          {...rest}
+        >
           <Icon name={icon} />
         </ContainerButtoIcon>
       </Form>

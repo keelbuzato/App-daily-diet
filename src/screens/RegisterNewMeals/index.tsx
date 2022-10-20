@@ -115,7 +115,7 @@ export function RegisterNewMeals() {
   return (
     <Teste>
       <HeaderNewlsMeals
-        variant={PercentVariant.primary}
+        variant={PercentVariant.tertiary}
         titulo="Nova refeição"
         icon="arrow-back"
         onPress={() => backHome()}

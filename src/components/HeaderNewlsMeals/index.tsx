@@ -21,7 +21,11 @@ export function HeaderNewlsMeals({
   return (
     <Conatiner>
       <Header variant={variant}>
-        <Button {...rest} onPress={onPress}>
+        <Button
+          {...rest}
+          onPress={onPress}
+          hitSlop={{ top: 20, left: 20, right: 20, bottom: 20 }}
+        >
           <Icon name={icon} />
         </Button>
         <Title>{titulo}</Title>

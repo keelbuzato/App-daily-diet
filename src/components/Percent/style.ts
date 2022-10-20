@@ -48,4 +48,5 @@ export const ContainerButtoIcon = styled.TouchableOpacity`
 
 export const Icon = styled(MaterialIcons).attrs(({ theme }) => ({
   size: 24,
+  color: theme.COLORS.GREEN_DARK,
 }))``;

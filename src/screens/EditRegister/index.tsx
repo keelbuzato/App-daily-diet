@@ -3,8 +3,11 @@ import { ButtonSelect } from '@components/ButtonSelect';
 import { HeaderNewlsMeals } from '@components/HeaderNewlsMeals';
 import { Input } from '@components/Input';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { createdNewMeals } from '@storage/GroupNewMeals/createdNewMeals';
 import { getByIdMeals } from '@storage/GroupNewMeals/getByIdMeals';
+import { removeRegisterMeals } from '@storage/GroupNewMeals/removeRegisterMeals';
 import { PercentVariant } from '@utils/getPercentVariant';
+import { createdDate } from '@utils/time';
 import React, { useCallback, useEffect, useState } from 'react';
 import {
   ContainerSafeAreaView,
@@ -25,10 +28,11 @@ export const EditRegister = () => {
   const [transactionType, setTransactionType] = useState('');
   const [nameMeal, setNameMeal] = useState('');
   const [descriptionMeals, setDescriptionMeals] = useState('');
-  const [date, setDate] = useState(new Date());
-  const [hours, setHours] = useState(new Date());
-  const [showDate, setShowDate] = useState(false);
-  const [showTime, setShowTime] = useState(false);
+  const [date, setDate] = useState();
+  const [hours, setHours] = useState();
+  const [idMeal, setIdMeal] = useState();
+  const [showDate, setShowDate] = useState();
+  const [showTime, setShowTime] = useState();
 
   const {
     params: { id },
@@ -36,12 +40,47 @@ export const EditRegister = () => {
 
   const navigation = useNavigation();
 
+  const getMeal = useCallback(async () => {
+    const meal = await getByIdMeals(id);
+    if (meal?.date) {
+      const date = createdDate(meal.date, meal.hours);
+      const hours = createdDate(meal.date, meal.hours);
+      setDate(date);
+      setHours(hours);
+    }
+    setNameMeal(meal.name);
+    setDescriptionMeals(meal.description);
+    setTransactionType(meal.variant);
+    setIdMeal(meal.id);
+  }, [id]);
+
+  async function updatingInformation() {
+    try {
+      await removeRegisterMeals(id);
+      const updatingMeal = {
+        id: idMeal,
+        name: nameMeal,
+        description: descriptionMeals,
+        date: date.toLocaleDateString(),
+        hours: transfomingTime(hours),
+        variant: transactionType,
+      };
+
+      await createdNewMeals(updatingMeal);
+      navigation.navigate('detailsMeals', { id });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const handleTransactionTypeSelect = (type: 'UP' | 'DOWN') => {
     setTransactionType(type);
   };
+
   const showDatePickerTimer = () => {
     setIsVisibleTime(true);
   };
+
   const showDatePickerDate = () => {
     setIsVisibleDate(true);
   };
@@ -53,33 +92,22 @@ export const EditRegister = () => {
   const hideDatePickerDate = () => {
     setIsVisibleDate(false);
   };
-  const showDateConfirm = (item) => {
-    if (showDate === true) return item.toLocaleDateString();
-    else {
-      return '';
-    }
-  };
 
   const handleConfirmDate = (date) => {
     console.warn('A date has been picked: ', date);
     setDate(date);
     hideDatePickerDate();
-    date.toLocaleDateString();
+    setShowDate(true);
   };
-  const showTimeConfirm = (item) => {
-    if (showTime === true) return transfomingTime();
-    else {
-      return '';
-    }
-  };
+
   const handleConfirmTime = (hours) => {
     console.warn('A hours has been picked: ', hours);
     setHours(hours);
     hideDatePickerTimer();
-    setShowTime(true);
   };
-  const transfomingTime = () => {
-    const transfomedTime = hours.toLocaleTimeString().split(':');
+  const transfomingTime = (hour) => {
+    if (!hour) return '';
+    const transfomedTime = hour?.toLocaleTimeString()?.split(':');
     return `${transfomedTime[0]}:${transfomedTime[1]}`;
   };
 
@@ -87,13 +115,6 @@ export const EditRegister = () => {
     navigation.navigate('detailsMeals', { id });
   }
 
-  const getMeal = useCallback(async () => {
-    const meal = await getByIdMeals(id);
-    setNameMeal(meal.name);
-    setDescriptionMeals(meal.description);
-    setDate(meal.date);
-    setHours(meal.hours);
-  }, [id]);
   useEffect(() => {
     getMeal();
   }, []);
@@ -121,24 +142,25 @@ export const EditRegister = () => {
           <ContainerDate>
             <Title>Data</Title>
             <ButtonDateAndHours onPress={showDatePickerDate}>
-              <Title>Teste</Title>
+              <Title>{date?.toLocaleDateString()}</Title>
             </ButtonDateAndHours>
             <SelectDateAndTime
               testID="datePicker"
               isVisible={isVisibleDate}
-              date={new Date()}
               mode={'date'}
               display={'spinner'}
               locale="pt-BR"
               textColor="black"
-              onConfirm={handleConfirmDate}
+              date={date}
+              onConfirm={() => handleConfirmDate(date)}
               onCancel={hideDatePickerDate}
+              onChange={setDate}
             />
           </ContainerDate>
           <ContainerTime>
             <Title>Hora</Title>
-            <ButtonDateAndHours>
-              <Title>teste</Title>
+            <ButtonDateAndHours onPress={showDatePickerTimer}>
+              <Title>{transfomingTime(hours)}</Title>
             </ButtonDateAndHours>
             <SelectDateAndTime
               testID="timeDatePicker"
@@ -147,8 +169,10 @@ export const EditRegister = () => {
               display={'spinner'}
               locale="pt-BR"
               textColor="black"
-              onConfirm={() => {}}
-              onCancel={() => {}}
+              date={hours}
+              onConfirm={handleConfirmTime}
+              onCancel={hideDatePickerTimer}
+              onChange={setHours}
             />
           </ContainerTime>
         </ContainerInfoDateAndHours>
@@ -170,7 +194,7 @@ export const EditRegister = () => {
         <Button
           title="Salvar alterações"
           type="CONTAINED"
-          onPress={backDetailMeals}
+          onPress={() => updatingInformation()}
         />
       </ContainerBody>
     </ContainerSafeAreaView>

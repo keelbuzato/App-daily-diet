@@ -12,7 +12,11 @@ import {
   Status,
   ContainerStatus,
 } from './style';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
 import { removeRegisterMeals } from '@storage/GroupNewMeals/removeRegisterMeals';
 import { getAllNewMeals } from '@storage/GroupNewMeals/getAllNewMeals';
 import { Alert } from 'react-native';
@@ -70,9 +74,11 @@ export const DetailsMeal = () => {
     setDetailsMeal(meal);
   }, [id]);
 
-  useEffect(() => {
-    getMeal();
-  }, [id]);
+  useFocusEffect(
+    useCallback(() => {
+      getMeal();
+    }, [id]),
+  );
 
   const msgStatus = (variant) => {
     if (variant === 'UP') {
