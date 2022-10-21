@@ -119,12 +119,12 @@ export function RegisterNewMeals() {
       />
       <Container>
         <Input
-          name="Name"
+          name="Nome"
           onChangeText={setNameMeal}
           autoCapitalize="sentences"
         />
         <Input
-          name="Description"
+          name="Descrição"
           style={{ height: 120 }}
           multiline
           value={descriptionMeals}
@@ -156,6 +156,7 @@ export function RegisterNewMeals() {
               <Title>{showTimeConfirm(hours)}</Title>
             </ButtonDateAndHours>
             <InputDatePicker
+              date={date}
               testID="timeDatePicker"
               isVisible={isDatePickerVisibleTime}
               mode={'time'}

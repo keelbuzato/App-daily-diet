@@ -126,7 +126,7 @@ export const EditRegister = () => {
         icon={'arrow-back'}
       />
       <ContainerBody>
-        <Input name={'Name'} value={nameMeal} onChangeText={setNameMeal} />
+        <Input name={'Nome'} value={nameMeal} onChangeText={setNameMeal} />
         <Input
           name={'Descrição'}
           multiline={true}
