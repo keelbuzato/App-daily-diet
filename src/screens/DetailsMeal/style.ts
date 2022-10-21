@@ -1,16 +1,13 @@
 import styled, { css } from 'styled-components/native';
 import { PercentVariant } from '@utils/getPercentVariant';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
-export const Container = styled(SafeAreaView)`
-  flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.WHITE};
-`;
 export const ContainerBody = styled.View`
-  flex: 6;
+  flex: 5;
+  width: 100%;
   background-color: ${({ theme }) => theme.COLORS.WHITE};
   border-radius: 20px;
   padding: 24px 24px 0px 24px;
+  margin-top: -20px;
 `;
 
 export const Titulo = styled.Text`
@@ -44,6 +41,7 @@ export const ContainerFooter = styled.View`
   flex: 1;
   justify-content: flex-end;
   align-items: flex-end;
+  margin-bottom: 30px;
 `;
 
 export const ContainerStatus = styled.View`

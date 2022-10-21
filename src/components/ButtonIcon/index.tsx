@@ -1,6 +1,7 @@
 import { TouchableOpacityProps } from 'react-native';
 import { Container, TypeIconProps, Icon } from './style';
 import { MaterialIcons } from '@expo/vector-icons';
+import React from 'react';
 
 type Props = TouchableOpacityProps & {
   type?: TypeIconProps;

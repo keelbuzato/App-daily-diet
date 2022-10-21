@@ -1,6 +1,5 @@
 import { Button } from '@components/Button';
 import { HeaderNewlsMeals } from '@components/HeaderNewlsMeals';
-import { PercentVariant } from '@utils/getPercentVariant';
 import {
   Container,
   ContainerBody,
@@ -16,16 +15,16 @@ import {
   useFocusEffect,
   useNavigation,
   useRoute,
+  RouteProp,
 } from '@react-navigation/native';
 import { removeRegisterMeals } from '@storage/GroupNewMeals/removeRegisterMeals';
 import { getAllNewMeals } from '@storage/GroupNewMeals/getAllNewMeals';
 import { Alert } from 'react-native';
 import { useState } from 'react';
-import { useEffect } from 'react';
 import { getByIdMeals } from '@storage/GroupNewMeals/getByIdMeals';
 import { useCallback } from 'react';
 import { Loading } from '@components/Loading';
-
+import { StackParams } from '@routes/types/types';
 import { getVariant } from '@utils/getVariant';
 import React from 'react';
 
@@ -34,7 +33,7 @@ export const DetailsMeal = () => {
   const navigation = useNavigation();
   const {
     params: { id },
-  } = useRoute();
+  } = useRoute<RouteProp<StackParams, 'detailsMeals'>>();
 
   async function handleRemoveMeals(idMeals: string) {
     try {
@@ -90,42 +89,40 @@ export const DetailsMeal = () => {
   if (!detailsMeal?.name) return <Loading />;
   return (
     <>
-      <Container>
-        <HeaderNewlsMeals
-          titulo="Refeição"
-          variant={getVariant(detailsMeal.variant)}
-          onPress={backHome}
-          icon={'arrow-back'}
-        />
-        <ContainerBody>
-          <Titulo>{detailsMeal.name} </Titulo>
-          <Descripition>{detailsMeal.description}</Descripition>
-          <DescriptionDateAndHours>Data e Hora</DescriptionDateAndHours>
-          <Descripition>
-            {detailsMeal.date} ás {detailsMeal.hours}
-          </Descripition>
-          <ContainerStatus>
-            <Status variant={getVariant(detailsMeal.variant)} />
-            <DescriptionStatus>
-              {msgStatus(detailsMeal.variant)}
-            </DescriptionStatus>
-          </ContainerStatus>
-          <ContainerFooter>
-            <Button
-              title="Editar refeição"
-              onPress={() => editRegisterMeal(id)}
-              nameIcon="edit"
-              type="CONTAINED"
-            />
-            <Button
-              title="Excluir refeição"
-              onPress={() => confirmationRemoveMeals(id)}
-              nameIcon="delete"
-              type="OUTLINED"
-            />
-          </ContainerFooter>
-        </ContainerBody>
-      </Container>
+      <HeaderNewlsMeals
+        titulo="Refeição"
+        variant={getVariant(detailsMeal.variant)}
+        onPress={backHome}
+        icon={'arrow-back'}
+      />
+      <ContainerBody>
+        <Titulo>{detailsMeal.name} </Titulo>
+        <Descripition>{detailsMeal.description}</Descripition>
+        <DescriptionDateAndHours>Data e Hora</DescriptionDateAndHours>
+        <Descripition>
+          {detailsMeal.date} ás {detailsMeal.hours}
+        </Descripition>
+        <ContainerStatus>
+          <Status variant={getVariant(detailsMeal.variant)} />
+          <DescriptionStatus>
+            {msgStatus(detailsMeal.variant)}
+          </DescriptionStatus>
+        </ContainerStatus>
+        <ContainerFooter>
+          <Button
+            title="Editar refeição"
+            onPress={() => editRegisterMeal(id)}
+            nameIcon="edit"
+            type="CONTAINED"
+          />
+          <Button
+            title="Excluir refeição"
+            onPress={() => confirmationRemoveMeals(id)}
+            nameIcon="delete"
+            type="OUTLINED"
+          />
+        </ContainerFooter>
+      </ContainerBody>
     </>
   );
 };

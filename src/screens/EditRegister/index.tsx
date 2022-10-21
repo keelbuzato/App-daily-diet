@@ -2,7 +2,8 @@ import { Button } from '@components/Button';
 import { ButtonSelect } from '@components/ButtonSelect';
 import { HeaderNewlsMeals } from '@components/HeaderNewlsMeals';
 import { Input } from '@components/Input';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { StackParams } from '@routes/types/types';
 import { createdNewMeals } from '@storage/GroupNewMeals/createdNewMeals';
 import { getByIdMeals } from '@storage/GroupNewMeals/getByIdMeals';
 import { removeRegisterMeals } from '@storage/GroupNewMeals/removeRegisterMeals';
@@ -26,17 +27,16 @@ export const EditRegister = () => {
   const [isVisibleDate, setIsVisibleDate] = useState(false);
   const [isVisibleTime, setIsVisibleTime] = useState(false);
   const [transactionType, setTransactionType] = useState('');
-  const [nameMeal, setNameMeal] = useState('');
-  const [descriptionMeals, setDescriptionMeals] = useState('');
+  const [nameMeal, setNameMeal] = useState();
+  const [descriptionMeals, setDescriptionMeals] = useState();
   const [date, setDate] = useState();
   const [hours, setHours] = useState();
   const [idMeal, setIdMeal] = useState();
-  const [showDate, setShowDate] = useState();
-  const [showTime, setShowTime] = useState();
+  const [showDate, setShowDate] = useState(false);
 
   const {
     params: { id },
-  } = useRoute();
+  } = useRoute<RouteProp<StackParams, 'editRegister'>>();
 
   const navigation = useNavigation();
 
@@ -120,7 +120,7 @@ export const EditRegister = () => {
   }, []);
 
   return (
-    <ContainerSafeAreaView>
+    <>
       <HeaderNewlsMeals
         onPress={backDetailMeals}
         titulo={'Editar refeição'}
@@ -197,6 +197,6 @@ export const EditRegister = () => {
           onPress={() => updatingInformation()}
         />
       </ContainerBody>
-    </ContainerSafeAreaView>
+    </>
   );
 };

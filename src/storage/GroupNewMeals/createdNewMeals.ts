@@ -7,6 +7,7 @@ type newMealsProps = {
   description: string;
   data: string;
   hours: string;
+  variant: 'UP' | 'DOWN';
 };
 
 export async function createdNewMeals(newMeals: newMealsProps) {

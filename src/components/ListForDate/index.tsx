@@ -5,7 +5,14 @@ import { TouchableOpacityProps } from 'react-native';
 import { DateList, Container } from './style';
 
 interface Props extends TouchableOpacityProps {
-  NewMealRegister: [];
+  NewMealRegister: [
+    {
+      name: string;
+      date: string;
+      hours: string;
+    },
+  ];
+  onPress: () => void;
 }
 
 export function ListForDate({ NewMealRegister, onPress, ...rest }: Props) {

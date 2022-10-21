@@ -26,7 +26,6 @@ export function Home() {
   async function fecthMeals() {
     try {
       const data = await getAllNewMeals();
-      console.log(data);
       const dateString = data.sort(
         (a, b) => createdDate(b.date, b.hours) - createdDate(a.date, a.hours),
       );
@@ -82,7 +81,6 @@ export function Home() {
   useFocusEffect(
     useCallback(() => {
       fecthMeals();
-      console.log('atualização');
     }, []),
   );
 

@@ -2,13 +2,8 @@ import { Box } from '@components/Box';
 import { ButtonIcon } from '@components/ButtonIcon';
 import { Percent } from '@components/Percent';
 import { PercentVariant } from '@utils/getPercentVariant';
-import {
-  useFocusEffect,
-  useNavigation,
-  useRoute,
-} from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import React, { useCallback, useEffect, useState } from 'react';
-import { StatusBar } from 'react-native';
 import {
   Description,
   ContainerPercentStatistic,
@@ -48,7 +43,6 @@ export function Statistic() {
         best = currentBest;
       }
     });
-    console.log(currentBest);
     setBestSequence(best);
   }, [listMeal]);
 
@@ -84,7 +78,7 @@ export function Statistic() {
   }, [listMeal]);
 
   return (
-    <Container>
+    <>
       <ContainerPercentStatistic variant={PercentVariant.primary}>
         <DataValue>
           <ButtonIcon
@@ -110,14 +104,14 @@ export function Statistic() {
             variant={PercentVariant.tertiary}
           />
           <ContainerDuploBox>
-            <Box mr={2}>
+            <Box marginRight={2}>
               <Percent
                 value={calcMealCorrect()}
                 description="refeições dentro da dieta"
                 variant={PercentVariant.primary}
               />
             </Box>
-            <Box ml={2}>
+            <Box marginLeft={2}>
               <Percent
                 value={calcMealWrong()}
                 description="refeições fora da dieta"
@@ -127,6 +121,6 @@ export function Statistic() {
           </ContainerDuploBox>
         </OrganizingBox>
       </ContainerGeneralStatistic>
-    </Container>
+    </>
   );
 }

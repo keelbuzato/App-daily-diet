@@ -2,15 +2,16 @@ import { BoxCenter, Container, Image, Title, Message, Form } from './style';
 import feedbackGood from '../../assets/feedbackGood.png';
 import feedbackBad from '../../assets/feedbackBad.png';
 import { Button } from '@components/Button';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import React from 'react';
 import { getVariant } from '@utils/getVariant';
+import { StackParams } from '@routes/types/types';
 
 export const Feedback = () => {
   const navigation = useNavigation();
   const {
     params: { variant },
-  } = useRoute();
+  } = useRoute<RouteProp<StackParams, 'feedback'>>();
 
   function backHome() {
     navigation.navigate('home');

@@ -1,12 +1,9 @@
 import styled, { css } from 'styled-components/native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
-export const Teste = styled.SafeAreaView`
-  flex: 1;
-  background-color: ${({ theme }) => theme.COLORS.WHITE};
-`;
-
 export const Container = styled.View`
+flex:4;
+top:-20px
   background-color: ${({ theme }) => theme.COLORS.WHITE};
   width: 100%;
   padding: 24px 24px 0px 24px;

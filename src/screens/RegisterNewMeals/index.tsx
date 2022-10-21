@@ -6,7 +6,7 @@ import {
   ContainerInfoDateAndHours,
   Form,
   Question,
-  Teste,
+  SafeAreaView,
   InputDatePicker,
   ContainerBoxFather,
   Title,
@@ -55,7 +55,7 @@ export function RegisterNewMeals() {
       return '';
     }
   };
-  const showTimeConfirm = (item) => {
+  const showTimeConfirm = () => {
     if (showTime === true) return transfomingTime();
     else {
       return '';
@@ -105,7 +105,6 @@ export function RegisterNewMeals() {
       };
 
       await createdNewMeals(registerMeals);
-      console.log(registerMeals);
       navigation.navigate('feedback', { variant: transactionType });
     } catch (error) {
       console.log(error);
@@ -113,7 +112,7 @@ export function RegisterNewMeals() {
   }
 
   return (
-    <Teste>
+    <>
       <HeaderNewlsMeals
         variant={PercentVariant.tertiary}
         titulo="Nova refeição"
@@ -191,6 +190,6 @@ export function RegisterNewMeals() {
           type="CONTAINED"
         />
       </Container>
-    </Teste>
+    </>
   );
 }

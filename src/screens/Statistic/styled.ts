@@ -2,10 +2,6 @@ import { getPercentVariant } from '@utils/getPercentVariant';
 import styled, { css } from 'styled-components/native';
 import { RFPercentage } from 'react-native-responsive-fontsize';
 
-export const Container = styled.SafeAreaView`
-  flex: 1;
-`;
-
 export const ContainerPercentStatistic = styled.View`
   flex: 1;
   width: 100%;
@@ -14,10 +10,10 @@ export const ContainerPercentStatistic = styled.View`
     getPercentVariant(variant).backgroundColor};
 `;
 export const ContainerGeneralStatistic = styled.View`
-  flex: 2;
+  flex: 4;
   background-color: ${({ theme }) => theme.COLORS.WHITE};
   border-radius: 20px;
-  margin-top: -100px;
+
   padding: 24px;
 `;
 
@@ -42,6 +38,7 @@ export const DataValue = styled.View`
   flex: 1;
   text-align: center;
   padding: 40px;
+  margin-top: 15px;
 `;
 
 export const Description = styled.Text`

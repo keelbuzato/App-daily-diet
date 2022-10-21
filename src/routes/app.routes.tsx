@@ -6,8 +6,9 @@ import { Home } from '@screens/home';
 import { RegisterNewMeals } from '@screens/RegisterNewMeals';
 import { Statistic } from '@screens/Statistic';
 import React from 'react';
+import { StackParams } from './types/types';
 
-const { Navigator, Screen } = createNativeStackNavigator();
+const { Navigator, Screen } = createNativeStackNavigator<StackParams>();
 
 export function AppRoutes() {
   return (

@@ -2,6 +2,7 @@ import { Container, Title, IconForButton } from './style';
 import { useTheme } from 'styled-components/native';
 import { TouchableOpacityProps } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import React from 'react';
 
 export type Props = TouchableOpacityProps & {
   title: string;

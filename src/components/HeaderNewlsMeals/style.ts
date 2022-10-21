@@ -1,15 +1,10 @@
 import { getPercentVariant } from '@utils/getPercentVariant';
 import styled, { css } from 'styled-components/native';
 import { MaterialIcons } from '@expo/vector-icons';
-import { SafeAreaView } from 'react-native';
-
-export const Conatiner = styled(SafeAreaView)`
-  flex: 1;
-`;
 
 export const Header = styled.View`
+  flex: 1;
   width: 100%;
-  height: 132px;
   background-color: ${({ variant }) =>
     getPercentVariant(variant).backgroundColor};
   justify-content: center;
@@ -25,13 +20,14 @@ export const Title = styled.Text`
   `}
   justify-content:center;
   align-items: center;
+  top: 15px;
 `;
 export const Button = styled.TouchableOpacity`
   width: 24px;
   height: 24px;
+  right: 100px;
+  top: 15px;
 `;
 export const Icon = styled(MaterialIcons).attrs(({ theme }) => ({
   size: 24,
-}))`
-  right: 100px;
-`;
+}))``;
