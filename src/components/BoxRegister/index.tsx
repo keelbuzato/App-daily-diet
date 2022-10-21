@@ -27,7 +27,9 @@ export function BoxRegister({
       <ContainerInformation>
         <Hours>{value}</Hours>
         <Divider />
-        <Description>{description}</Description>
+        <Description ellipsizeMode="tail" numberOfLines={1}>
+          {description}
+        </Description>
       </ContainerInformation>
       <Status variant={variant} />
     </Container>

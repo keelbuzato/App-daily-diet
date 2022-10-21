@@ -20,9 +20,10 @@ export function ListForDate({ NewMealRegister, onPress, ...rest }: Props) {
     <Container>
       {NewMealRegister.map((item) => (
         <>
-          <DateList>{item.date}</DateList>
+          <DateList key={item.date}>{item.date}</DateList>
           {item.list.map((meal) => (
             <BoxRegister
+              key={meal.id}
               onPress={() => onPress(meal?.id)}
               value={meal.hours}
               description={meal.name}

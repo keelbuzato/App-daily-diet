@@ -1,4 +1,3 @@
-import { ButtonIcon } from '@components/ButtonIcon';
 import {
   Container,
   Description,
@@ -9,7 +8,7 @@ import {
 } from './style';
 import { PercentVariant } from '../../utils/getPercentVariant';
 import { MaterialIcons } from '@expo/vector-icons';
-import { TouchableOpacityProps } from 'react-native';
+import { TouchableOpacityProps, TextProps } from 'react-native';
 import React from 'react';
 
 type IconProps = keyof typeof MaterialIcons.glyphMap;

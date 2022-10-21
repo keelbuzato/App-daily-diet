@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components/native';
 import { getPercentVariant } from '../../utils/getPercentVariant';
 import { MaterialIcons } from '@expo/vector-icons';
+import { TextProps, Text } from 'react-native';
 
 export const Container = styled.View`
   width: 100%;
@@ -25,7 +26,7 @@ export const Value = styled.Text`
   flex-wrap:wrap;
 `;
 
-export const Description = styled.Text`
+export const Description = styled(Text)<TextProps>`
   ${({ theme }) => css`
     font-family: ${theme.FONT_FAMILY.REGULAR};
     font-size: ${theme.FONT_SIZE.MD}px;

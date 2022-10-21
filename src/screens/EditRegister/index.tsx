@@ -94,14 +94,12 @@ export const EditRegister = () => {
   };
 
   const handleConfirmDate = (date) => {
-    console.warn('A date has been picked: ', date);
     setDate(date);
     hideDatePickerDate();
     setShowDate(true);
   };
 
   const handleConfirmTime = (hours) => {
-    console.warn('A hours has been picked: ', hours);
     setHours(hours);
     hideDatePickerTimer();
   };

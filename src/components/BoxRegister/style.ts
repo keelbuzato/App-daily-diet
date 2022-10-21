@@ -1,8 +1,10 @@
 import { getPercentVariant } from '@utils/getPercentVariant';
+import { TextProps, Text } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
 export const Container = styled.TouchableOpacity`
   width: 100%;
+  max-width: 100%;
   height: 49px;
   flex-direction: row;
 
@@ -25,7 +27,8 @@ export const Hours = styled.Text`
   margin-right: 12px;
 `;
 
-export const Description = styled.Text`
+export const Description = styled(Text)<TextProps>`
+  max-width: 80%;
   ${({ theme }) => css`
     color: ${theme.COLORS.GRAY_600};
     font-family: ${theme.FONT_FAMILY.REGULAR};

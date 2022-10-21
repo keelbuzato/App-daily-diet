@@ -1,3 +1,4 @@
+import { TextProps, Text } from 'react-native';
 import styled, { css } from 'styled-components/native';
 
 export const Container = styled.View`
@@ -7,6 +8,7 @@ export const Container = styled.View`
 
 export const ContainerInput = styled.TextInput`
   width: 100%;
+  max-width: 100%;
   height: 48px;
   ${({ theme }) => css`
     color: ${theme.COLORS.GRAY_700};
@@ -18,7 +20,7 @@ export const ContainerInput = styled.TextInput`
   padding: 8px;
 `;
 
-export const Titulo = styled.Text`
+export const Titulo = styled(Text)<TextProps>`
   ${({ theme }) => css`
     color: ${theme.COLORS.GRAY_600};
     font-family: ${theme.FONT_FAMILY.BOLD};
